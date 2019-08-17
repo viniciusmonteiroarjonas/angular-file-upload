@@ -1,0 +1,15 @@
+<h4 class="text-center">Formulário com upload de arquivos</h4>
+<form [formGroup]="formCadastro" (ngSubmit)="submit()">
+  <div class="form-group">
+    <label>Nome:</label>
+    <input type="text" class="form-control" formControlName="nome" placeholder="Informe seu nome">
+  </div>
+  <small>Selecione apenas um arquivo:</small>
+  <single-file-upload formControlName="fileSingle"></single-file-upload>
+  <small>Selecione apenas um arquivo:</small>
+  <multiple-file-upload formControlName="fileMultiple"></multiple-file-upload>
+  <div class="form-group mt-2">
+    <button type="submit" class="btn btn-primary btn-block" [disabled]="!formCadastro.valid">Enviar</button>
+  </div>
+  {{formCadastro.value | json}}
+</form>

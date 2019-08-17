@@ -1,0 +1,21 @@
+<div class="form-group">
+  <div class="file-drop-area">
+    <span class="file-msg">Arraste e solte os arquivos aqui ou clique para selecionar</span>
+    <input class="file-input" type="file">
+  </div>
+  <div class="row mt-3">
+    <div class="files-list col-md-4 mt-3" *ngFor="let file of files;let i=index">
+      <span class="float-left mr-2">
+        <img src="http://icons.iconarchive.com/icons/zhoolego/material/512/Filetype-Docs-icon.png" width="50px"
+          height="50px"
+          *ngIf="file.type == 'image/jpg' || file.type == 'image/jpeg' || file.type == 'image/png' || file.type == 'image/png'; else fileAttachement">
+        <ng-template #fileAttachement>
+          <img src="https://upload.wikimedia.org/wikipedia/commons/8/87/PDF_file_icon.svg" width="50px" height="50px">
+        </ng-template>
+      </span>
+      <b>Nome: {{ file.name }}</b><br>
+      <b>Tamanho: {{ file.size }}</b>
+      <i class="fa fa-trash remove-file" (click)="deleteAttachment(i)"></i>
+    </div>
+  </div>
+</div>
